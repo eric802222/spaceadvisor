@@ -1,0 +1,297 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+	<!-- Include Twitter Bootstrap and jQuery: -->
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>	
+<link rel="stylesheet" href="css/bootstrap-3.3.2.min.css" type="text/css"/>
+<script type="text/javascript" src="js/bootstrap-3.3.2.min.js"></script>
+ 
+<!-- Include the plugin's CSS and JS: -->
+<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
+<link rel="stylesheet" href="css/grid12.css" type="text/css"/>
+
+
+<link rel="stylesheet" href="css/pikaday.css">
+<script src="js/pikaday.js"></script>
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="css/MonthPicker.min.css" rel="stylesheet" type="text/css" />
+<script src="js/MonthPicker.min.js"></script>
+<style>
+html,body{font-family:"Microsoft JhengHei";margin:20px auto;}
+#select_CD{width:10em;display:inline}
+.month-picker-month-table .ui-button {width: 5.2em;}
+#select_RQ,#select_YXRQ1,#select_YXRQ2{width:10em}
+.form-control{display:inline-block}
+.input_hW{width:6em;}
+.input_fW{width:16em;}
+.input_eW{width:20em;}
+h2{color:#4f6ea2;}
+div.ui-tooltip {
+    max-width: 400px;
+}
+.section{margin-bottom:50px}
+.align_right{text-align:right}
+
+
+</style>
+
+  </head>
+  <body>
+  <div class="container">
+  <div class="row">
+  <div class="col-xs-6">
+<p>選擇場地 <select id="select_CD" class="form-control" >
+    <option>請選擇</option>
+    <option>東方廳-貳</option>
+    <option>東方廳-叁</option>
+  </select>
+  </p>
+<p>選擇日期 <input id="select_RQ" class="form-control" type="text" placeholder="選擇日期"/> <button id="btn_JT" class="btn btn-success">今天</button>
+</p>
+  </div>
+  <div class="col-xs-6 align_right">
+<select id="select_DD" multiple="multiple">
+    <option value="訂單1">訂單1</option>
+    <option value="訂單2">訂單2</option>
+    <option value="訂單3">訂單3</option>
+    <option value="訂單4">訂單4</option>
+    <option value="訂單5">訂單5</option>
+    <option value="訂單6">訂單6</option>
+</select>
+<select id="select_FA" multiple="multiple">
+    <option value="方案1">方案1</option>
+    <option value="方案2">方案2</option>
+    <option value="方案3">方案3</option>
+    <option value="方案4">方案4</option>
+    <option value="方案5">方案5</option>
+    <option value="方案6">方案6</option>
+</select>
+</div>
+</div>
+<div class="row">
+ <div class="col-xs-12">
+ <hr>
+ <div class="section">
+ <h2>已選擇日期<img title="您可直接在左邊的月曆上拖拉您想選擇的日期。" src="img/01.jpg" /></h2>
+ <input id="select_YXRQ1" class="form-control" type="text"/>~<input id="select_YXRQ2" class="form-control" type="text"/>
+ </div>
+  <div class="section">
+  <h2>管理已售出場地或<br/>開啟線上預訂</h2>
+<div class="radio">
+  <label><input type="radio" name="rad_KL"  value=0>即時預訂(Online Booking)</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="rad_KL" value=1>接受申請需求(RFP)<br/>
+  <select class="form-control input_hW">
+    <option value="0">00:00</option>
+    <option value="2">02:00</option>
+    <option value="4">04:00</option>
+    <option value="6">06:00</option>
+    <option value="8">08:00</option>
+    <option value="10">10:00</option>
+	<option value="12">12:00</option>
+    <option value="14">14:00</option>
+    <option value="16">16:00</option>
+    <option value="18">18:00</option>
+    <option value="20">20:00</option>
+    <option value="22">22:00</option>
+</select>
+~
+<select class="form-control input_hW">
+    <option value="0">00:00</option>
+    <option value="2">02:00</option>
+    <option value="4">04:00</option>
+    <option value="6">06:00</option>
+    <option value="8">08:00</option>
+    <option value="10">10:00</option>
+	<option value="12">12:00</option>
+    <option value="14">14:00</option>
+    <option value="16">16:00</option>
+    <option value="18">18:00</option>
+    <option value="20">20:00</option>
+    <option value="22">22:00</option>
+</select>
+</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="rad_KL"  value=2>關閉(不銷售)</label>
+</div>
+</div>
+<div id="div_CX" class="section">
+<h2>設定促銷活動<img src="img/02.jpg" /><img title="設定特別促銷折扣：<br/>促銷區間可直接在左方月曆上拖拉日期。" src="img/01.jpg" /></h2>
+
+<p>1.請輸入促銷活動名稱<br/>
+<input id="select_CXHD" class="form-control input_fW" type="text" placeholder="例：早鳥優惠"/>
+</p>
+<br>
+<p>2.請選擇折扣方案
+<div class="radio">
+  <label><input type="radio" name="opt_SKFA">一生一世婚宴方案</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="opt_SKFA">長長久久婚宴方案</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="opt_SKFA">半日會議方案</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="opt_SKFA">謝師宴方案</label>
+</div>
+</p>
+<br>
+<p>3.請輸入折扣數(請輸入數字ex.75折)<br/>
+<input id="select_CXHD" class="form-control input_hW" type="text" placeholder="85"/>折
+</p>
+<br>
+<p>4.請選擇搭配場地
+<div class="checkbox">
+  <label><input type="checkbox" value="">文華閣</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="">東方廳-貳</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="">東方廳-叄</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="">東方廳-陸</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="">大宴會廳-壹</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="">大宴會廳-貳</label>
+</div>
+</p>
+<br>
+<p>
+5.選擇下單區間<img title="設定可接受消費者下單預定的日期<br/>
+例如 :<br/>
+接受下單區間為1/1~1/31，此區間預定3/1~3/31的場地享有促銷優惠折扣。此處要設定的日期為1/1~1/31" src="img/01.jpg" /><br/>
+  <select class="form-control input_eW">
+    <option value="0">2017年01月01日~ 2017年01月15日</option>
+    <option value="1">2017年02月01日~ 2017年02月15日</option>
+    <option value="2">2017年03月01日~ 2017年03月15日</option>
+</select>
+</p>
+<br>
+<p><b>備註</b><br/>
+<input  class="form-control input_eW" type="text" placeholder="為此促銷活動增加備註 (字數限17字)" maxlength="17"/>
+</p>
+</div>
+
+<button class="btn btn-primary">儲存</button>
+<button class="btn ">取消</button>
+</div>
+</div>
+</div>
+
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+
+//設定日曆中文語系
+$.datepicker.regional['zh-TW']={
+   dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
+   dayNamesMin:["日","一","二","三","四","五","六"],
+   monthNames:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+   monthNamesShort:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+   prevText:"上月",
+   nextText:"次月",
+   weekHeader:"週"
+};
+
+//日曆語系設定為中文
+$.datepicker.setDefaults($.datepicker.regional["zh-TW"]);
+
+
+//月曆語系
+$.MonthPicker.i18n={
+backTo:"返回",
+buttonText:"打開月份選擇",
+jumpYears:"選擇年分",
+months:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+next12Years:"往後12年",
+nextLabel:"後",
+nextYear:"後一年",
+prev12Years:"往前12年",
+prevLabel:"前",
+prevYear:"上一年",
+year:"年分"
+}
+  
+  
+    $(document).ready(function() {
+	
+		//今天按鈕
+		$("#btn_JT").click(function(){
+			var t=new Date();
+　			$("#select_RQ").val(t.getFullYear()+ "年" + (t.getMonth()+1) + "月");
+		})
+		$("img").tooltip( {position: { my: "left+15 center", at: "right center" }
+		,content: function() {
+               return $(this).attr('title');
+          }});
+		  
+		  
+		$("#select_RQ").MonthPicker({ Button: false,MonthFormat: 'yy年MM'
+		});
+		$("#select_YXRQ1").datepicker( {
+        changeMonth: true,
+        changeYear: true,
+		dateFormat: 'yy/mm/dd'
+		})
+		$("#select_YXRQ2").datepicker( {
+        changeMonth: true,
+        changeYear: true,
+		dateFormat: 'yy/mm/dd'
+		})
+	
+        $('#select_DD').multiselect({
+		name:"訂單",
+		 buttonText: selectText
+		});
+		 $('#select_FA').multiselect({
+		 name:"方案",
+		 buttonText: selectText
+		});
+		 $('input[name=rad_KL]').change(function(){
+			if( $(this).val()=="1" ) {
+			
+				$("#div_CX").css("display","none");
+			}else{
+				$("#div_CX").css("display","block");
+			}
+    
+      });
+    });
+	
+	function selectText(options, select) {
+                if (options.length === 0) {
+				
+                    return '顯示'+this.name;
+                }
+                else if (options.length > 3) {
+                    return options.length+'個'+this.name;
+                }
+                 else {
+                     var labels = [];
+                     options.each(function() {
+                         if ($(this).attr('label') !== undefined) {
+                             labels.push($(this).attr('label'));
+                         }
+                         else {
+                             labels.push($(this).html());
+                         }
+                     });
+                     return labels.join(', ') + '';
+                 }
+	}
+</script>
+  </body>
+</html>
